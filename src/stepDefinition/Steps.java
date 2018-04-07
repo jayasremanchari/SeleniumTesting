@@ -162,7 +162,6 @@ public class Steps {
 		WebElement total = driver.findElement(By
 				.className("amount_payable_total"));
 		Assert.assertEquals(true, total.isDisplayed());
-		driver.findElement(By.linkText("Continue")).sendKeys(Keys.ENTER);
 		
 		
 	}
