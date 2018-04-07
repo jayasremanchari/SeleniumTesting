@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import Utils.Util;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -90,32 +88,46 @@ public class Steps {
 
 	@Given("^User enters valid credentials$")
 	public void user_enters_valid_credentials()  {
-		driver.findElement(By.id("ch_login_email")).sendKeys("fiyazhbasha@gmail.com");
-		driver.findElement(By.id("ch_login_password")).sendKeys("Allah@786");
-		driver.findElement(By.id("ch_login_btn")).click();
+
+		user_enters_valid_credentials("fiyazhbasha@gmail.com","Allah@786");
 			   
 	}
 
 	
 	@When("^User enters \"([^\"]*)\" \"([^\"]*)\" destinations$")
 	public void user_enters_destinations(String from, String to)  {
-		String dep = from.replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
-		dep =from.replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
-		driver.findElement(By.id("hp-widget__sfrom")).sendKeys(dep);
-		String arr = to.replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
-		arr =to.replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
-		driver.findElement(By.id("hp-widget__sTo")).sendKeys(arr);
+		
+		if(driver.findElement(By.id("hp-widget__sfrom")).isDisplayed()){
+			driver.findElement(By.id("hp-widget__sfrom")).clear();
+			driver.findElement(By.id("hp-widget__sfrom")).sendKeys(from);
+		}
+		
+		if(driver.findElement(By.id("hp-widget__sTo")).isDisplayed()){
+			driver.findElement(By.id("hp-widget__sTo")).clear();
+			driver.findElement(By.id("hp-widget__sTo")).sendKeys(to);
+		}
 	}
 	
 	
 	@When("^the user enters the \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
 	public void the_user_enters_the_traveldate_passengerno(String date, String month, String year, String no_of_passengers) {
 	    
-		
-		driver.findElement(By.id("hp-widget__depart")).click();
-		driver.findElement(By.xpath("//td[@data-year='"+year+"'][@data-month='"+(Integer.parseInt(month)-1)+"']/a[contains(text(),'"+date+"')]")).click();
-		driver.findElement(By.id("hp-widget__paxCounter_pot")).click();
-		driver.findElement(By.xpath("//ul[@id='js-adult_counter']/li[contains(text(),'"+no_of_passengers+"')]")).click();
+		Boolean flag = Boolean.TRUE;
+		if(driver.findElement(By.id("hp-widget__depart")).isDisplayed())
+			driver.findElement(By.id("hp-widget__depart")).click();
+		while(flag){
+			if(driver.findElement(By.xpath("//td[@data-year='"+year+"'][@data-month='"+(Integer.parseInt(month)-1)+"']/a[contains(text(),'"+date+"')]")).isDisplayed()){
+				driver.findElement(By.xpath("//td[@data-year='"+year+"'][@data-month='"+(Integer.parseInt(month)-1)+"']/a[contains(text(),'"+date+"')]")).click();
+				flag = false;
+			}
+			else
+				driver.findElement(By.xpath("//a[@class='ui-datepicker-next ui-corner-all']")).click();
+
+		}
+		if(driver.findElement(By.id("hp-widget__paxCounter_pot")).isDisplayed())
+			driver.findElement(By.id("hp-widget__paxCounter_pot")).click();
+		if(driver.findElement(By.xpath("//ul[@id='js-adult_counter']/li[contains(text(),'"+no_of_passengers+"')]")).isDisplayed())
+			driver.findElement(By.xpath("//ul[@id='js-adult_counter']/li[contains(text(),'"+no_of_passengers+"')]")).click();
 	}
 
 	
@@ -126,8 +138,8 @@ public class Steps {
 	
 	@Given("^the User enters the search Criteria$")
 	public void the_User_enters_the_search_Criteria()  {
-		
-		user_enters_destinations("Chennai (MAA)", "Sydney (SYD)");
+		System.out.println("----------------------------------");
+		user_enters_destinations("Chennai,India", "Sydney,Australia");
 		the_user_enters_the_traveldate_passengerno("24", "5", "2018", "1");
 		available_flight_status_displayed_Successfully();
 	}
@@ -147,13 +159,14 @@ public class Steps {
 		Assert.assertEquals(true, total.isDisplayed());
 		
 		
+		
 	}
 	
-	/*@After
+	@After
 	public void tearDown(){
-		driver.quit();
+		driver.close();;
 		
-	}*/
+	}
 
 
 	
