@@ -32,7 +32,7 @@ public class Steps {
 	
 	@Before
 	public void init() {
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\manchari\\Desktop\\SAI\\Selenium\\geckodriver-v0.20.0-win64\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\manchari\\Desktop\\SAI\\Selenium\\geckodriver-v0.19.1-win64\\geckodriver.exe");
 		
 	}
 
@@ -104,12 +104,12 @@ public class Steps {
 		
 		if(driver.findElement(By.id("hp-widget__sfrom")).isDisplayed()){
 			driver.findElement(By.id("hp-widget__sfrom")).clear();
-			driver.findElement(By.id("hp-widget__sfrom")).sendKeys(from+"\n");
+			driver.findElement(By.id("hp-widget__sfrom")).sendKeys(from);
 		}
 		
 		if(driver.findElement(By.id("hp-widget__sTo")).isDisplayed()){
 			driver.findElement(By.id("hp-widget__sTo")).clear();
-			driver.findElement(By.id("hp-widget__sTo")).sendKeys(to+"\n");
+			driver.findElement(By.id("hp-widget__sTo")).sendKeys(to);
 		}
 	}
 	
@@ -144,9 +144,7 @@ public class Steps {
 	@Given("^the User enters the search Criteria$")
 	public void the_User_enters_the_search_Criteria()  {
 		
-		//user_enters_destinations("Chennai (MAA)", "Sydney (SYD)");
-		driver.findElement(By.id("hp-widget__sfrom")).sendKeys("Chennai,India"+"\n");
-		driver.findElement(By.id("hp-widget__sTo")).sendKeys("Sydney,Australia"+"\n");
+		user_enters_destinations("Chennai, India (MAA)", "Sydney, Australia (SYD)");
 		the_user_enters_the_traveldate_passengerno("24", "5", "2018", "1");
 		available_flight_status_displayed_Successfully();
 	}
