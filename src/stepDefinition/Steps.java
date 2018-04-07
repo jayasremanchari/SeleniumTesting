@@ -1,17 +1,17 @@
 package stepDefinition;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
-import org.junit.After;
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -29,7 +29,6 @@ public class Steps {
 		
 	}
 
-	
 
 	@Given("^User navigates to Login Page$")
 	public void user_navigates_to_Login_Page() throws Throwable {
@@ -39,7 +38,7 @@ public class Steps {
 		driver.findElement(By.id("ch_login_icon")).click();
 	}
 
-	/*@When("^User enters valid credentials\"([^\"]*)\"\"([^\"]*)\"$")
+	@When("^User enters valid credentials\"([^\"]*)\"\"([^\"]*)\"$")
 	public void user_enters_valid_credentials(String email, String password) throws Throwable {
 		driver.findElement(By.id("ch_login_email")).sendKeys(email);
 		driver.findElement(By.id("ch_login_password")).sendKeys(password);
@@ -60,32 +59,33 @@ public class Steps {
 
 	@Then("^Login Failure$")
 	public void login_Failure() throws Throwable {
-		System.out.println(driver.findElement(By.xpath("//div[@class='ch-error-msg ch-clearfix']//span[2])")).getText());  
+	  
 	}
 	
 	@Given("^the User has logged in to the Application Successfullyy$")
 	public void the_User_has_logged_in_to_the_Application_Successfullyy() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    
-	}*/
+	}
 	
 	@Given("^User enters valid credentials$")
 	public void user_enters_valid_credentials() throws Throwable {
 		driver.findElement(By.id("ch_login_email")).sendKeys("fiyazhbasha@gmail.com");
 		driver.findElement(By.id("ch_login_password")).sendKeys("Allah@786");
+		driver.findElement(By.id("ch_login_btn")).click();
+		
 	   
 	}
 
-	@Given("^User is on MakeMyTrip Home page$")
-	public void user_is_on_MakeMyTrip_Home_page() throws Throwable {
-	   
-		driver.findElement(By.id("ch_login_icon")).click();
-	}
-
+	
 	@When("^User enters \"([^\"]*)\" \"([^\"]*)\" destinations$")
 	public void user_enters_destinations(String arg1, String arg2) throws Throwable {
-		driver.findElement(By.id("hp-widget__sfrom")).sendKeys("Chennai (MAA)");
-		driver.findElement(By.id("hp-widget__sTo")).sendKeys("Sydney (SYD)");
+		String dep = "Chennai (MAA)".replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
+		dep ="Chennai (MAA)".replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
+		driver.findElement(By.id("hp-widget__sfrom")).sendKeys(dep);
+		String arr = "Sydney (SYD)".replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
+		arr ="Sydney (SYD)".replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
+		driver.findElement(By.id("hp-widget__sTo")).sendKeys(arr);
 	}
 	
 	
@@ -108,13 +108,33 @@ public class Steps {
 	public void available_flight_status_displayed_Successfully() throws Throwable {
 		driver.findElement(By.id("searchBtn")).click();
 	}
+	
+	@When("^the User selects the flight$")
+	public void the_User_selects_the_flight() throws Throwable {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//String element = driver.findElement(By.xpath("//p[@class='airways-name '][contains(text(),'Air India Express+ 1 more')]")).getText();
+		driver.findElement(By.id("bookButton")).click();
+		
+	}
 
+	@Then("^Flight Details Page Displayed Successfully\\.$")
+	public void flight_Details_Page_Displayed_Successfully() throws Throwable {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement total = driver.findElement(By
+				.className("amount_payable_total"));
+		Assert.assertEquals(true, total.isDisplayed());
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-
+		/*js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		
+		driver.findElement(By.cssSelector("a[ng-click *= 'gotoTraveller']")).click();*/
+		
+	}
 	
 	@After
 	public void tearDown(){
-		driver.close();
+		driver.quit();
+		
 	}
 
 
