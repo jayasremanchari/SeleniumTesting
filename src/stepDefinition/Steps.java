@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,10 @@ import cucumber.api.java.en.When;
 
 
 
+/**
+ * @author manchari
+ *
+ */
 public class Steps {
 	WebDriver driver = null; 
 	WebDriverWait wait = null;
@@ -99,12 +104,12 @@ public class Steps {
 		
 		if(driver.findElement(By.id("hp-widget__sfrom")).isDisplayed()){
 			driver.findElement(By.id("hp-widget__sfrom")).clear();
-			driver.findElement(By.id("hp-widget__sfrom")).sendKeys(from);
+			driver.findElement(By.id("hp-widget__sfrom")).sendKeys(from+"\n");
 		}
 		
 		if(driver.findElement(By.id("hp-widget__sTo")).isDisplayed()){
 			driver.findElement(By.id("hp-widget__sTo")).clear();
-			driver.findElement(By.id("hp-widget__sTo")).sendKeys(to);
+			driver.findElement(By.id("hp-widget__sTo")).sendKeys(to+"\n");
 		}
 	}
 	
@@ -138,33 +143,77 @@ public class Steps {
 	
 	@Given("^the User enters the search Criteria$")
 	public void the_User_enters_the_search_Criteria()  {
-		System.out.println("----------------------------------");
-		user_enters_destinations("Chennai,India", "Sydney,Australia");
+		
+		//user_enters_destinations("Chennai (MAA)", "Sydney (SYD)");
+		driver.findElement(By.id("hp-widget__sfrom")).sendKeys("Chennai,India"+"\n");
+		driver.findElement(By.id("hp-widget__sTo")).sendKeys("Sydney,Australia"+"\n");
 		the_user_enters_the_traveldate_passengerno("24", "5", "2018", "1");
 		available_flight_status_displayed_Successfully();
 	}
 	
 	@When("^the User selects the flight$")
-	public void the_User_selects_the_flight() throws Throwable {
+	public void the_User_selects_the_flight()  {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElement(By.id("bookButton")).click();
 		
 	}
 
 	@Then("^Flight Details Page Displayed Successfully\\.$")
-	public void flight_Details_Page_Displayed_Successfully() throws Throwable {
+	public void flight_Details_Page_Displayed_Successfully()  {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		WebElement total = driver.findElement(By
 				.className("amount_payable_total"));
 		Assert.assertEquals(true, total.isDisplayed());
-		
+		driver.findElement(By.linkText("Continue")).sendKeys(Keys.ENTER);
 		
 		
 	}
 	
+	@Given("^the user is in TravellerDetail Page$")
+	public void the_user_is_in_TravellerDetail_Page()  {
+		
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		if(driver.findElement(By.linkText("Continue")).isDisplayed())
+			driver.findElement(By.linkText("Continue")).sendKeys(Keys.ENTER);
+	   
+	}
+
+	@When("^the user enters the traveller_details \"([^\"]*)\"\"([^\"]*)\"\"([^\"]*)\"\"([^\"]*)\"\"([^\"]*)\"$")
+	public void the_user_enters_the_traveller_details(String name, String surname, String date, String month, String year)  {
+		if( driver.findElement(By.cssSelector("input[ng-model='traveller.givenName']")).isDisplayed())
+			driver.findElement(By.cssSelector("input[ng-model='traveller.givenName']")).sendKeys(name);
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.surname']")).isDisplayed());
+			driver.findElement(By.cssSelector("input[ng-model='traveller.surname']")).sendKeys(surname);
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.dob.DD']")).isDisplayed()) 
+			driver.findElement(By.cssSelector("input[ng-model='traveller.dob.DD']")).sendKeys(date);
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.dob.MM']")).isDisplayed())
+		 driver.findElement(By.cssSelector("input[ng-model='traveller.dob.MM']")).sendKeys(month);
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.dob.YYYY']")).isDisplayed())
+		 driver.findElement(By.cssSelector("input[ng-model='traveller.dob.YYYY']")).sendKeys(year);
+		
+	}
+
+	@When("^the user enters the passport_details \"([^\"]*)\" and date_of_expiry \"([^\"]*)\"\"([^\"]*)\"\"([^\"]*)\"$")
+	public void the_user_enters_the_passport_details_and_date_of_expiry(String arg1, String arg2, String arg3, String arg4)  {
+	   
+	}
+
+	@Then("^the user proceed to payment_gateway$")
+	public void the_user_proceed_to_payment_gateway() throws Throwable {
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.passportNumber']")).isDisplayed())
+			driver.findElement(By.cssSelector("input[ng-model='traveller.passportNumber']")).sendKeys("ACGPF9984L");
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.passportExpiryDate.DD']")).isDisplayed())
+			driver.findElement(By.cssSelector("input[ng-model='traveller.passportExpiryDate.DD']")).sendKeys("21");
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.passportExpiryDate.MM']")).isDisplayed())
+			driver.findElement(By.cssSelector("input[ng-model='traveller.passportExpiryDate.MM']")).sendKeys("09");
+		if(driver.findElement(By.cssSelector("input[ng-model='traveller.passportExpiryDate.YYYY']")).isDisplayed())
+			driver.findElement(By.cssSelector("input[ng-model='traveller.passportExpiryDate.YYYY']")).sendKeys("2020");
+	}
+	
 	@After
 	public void tearDown(){
-		driver.close();;
+		driver.close();
 		
 	}
 
