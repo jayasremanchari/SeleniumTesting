@@ -10,7 +10,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import Utils.Util;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -21,6 +24,7 @@ import cucumber.api.java.en.When;
 
 public class Steps {
 	WebDriver driver = null; 
+	WebDriverWait wait = null;
 	
 	
 	@Before
@@ -31,88 +35,106 @@ public class Steps {
 
 
 	@Given("^User navigates to Login Page$")
-	public void user_navigates_to_Login_Page() throws Throwable {
+	public void user_navigates_to_Login_Page() {
 		driver = new FirefoxDriver();
 		driver.get("https://www.makemytrip.com");
 		driver.manage().window().maximize();
-		driver.findElement(By.id("ch_login_icon")).click();
+		if (driver.findElement(By.id("ch_login_icon")).isDisplayed())
+			driver.findElement(By.id("ch_login_icon")).click();
 	}
 
 	@When("^User enters valid credentials\"([^\"]*)\"\"([^\"]*)\"$")
-	public void user_enters_valid_credentials(String email, String password) throws Throwable {
-		driver.findElement(By.id("ch_login_email")).sendKeys(email);
-		driver.findElement(By.id("ch_login_password")).sendKeys(password);
-		driver.findElement(By.id("ch_login_btn")).click();
+	public void user_enters_valid_credentials(String email, String password)  {
+		if(driver.findElement(By.id("ch_login_email")).isDisplayed())
+			driver.findElement(By.id("ch_login_email")).sendKeys(email);
+		if(driver.findElement(By.id("ch_login_password")).isDisplayed())
+			driver.findElement(By.id("ch_login_password")).sendKeys(password);
+		if(driver.findElement(By.id("ch_login_btn")).isDisplayed())
+			driver.findElement(By.id("ch_login_btn")).click();
 	}
 
 	@Then("^Login Successfull$")
-	public void login_Successfull() throws Throwable {
-		Assert.assertNotNull(driver.findElement(By.id("ch_logged-in")));
+	public void login_Successfull()  {
+		
+		WebElement loggedId = null;
+
+		wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='login-profile']")));
+		if (driver.findElement(By.xpath("//span[@class='login-profile']")).isDisplayed())
+			loggedId = driver.findElement(By.xpath("//span[@class='login-profile']"));
+		
+		Assert.assertEquals(true, loggedId.isDisplayed());
+	
 	}
 
 	@When("^User enters invalid credentials \"([^\"]*)\"\"([^\"]*)\"$")
-	public void user_enters_invalid_credentials(String email, String password) throws Throwable {
-		driver.findElement(By.id("ch_login_email")).sendKeys(email);
-		driver.findElement(By.id("ch_login_password")).sendKeys(password);
+	public void user_enters_invalid_credentials(String email, String password)  {
+		if(driver.findElement(By.id("ch_login_email")).isDisplayed())
+			driver.findElement(By.id("ch_login_email")).sendKeys(email);
+		if(driver.findElement(By.id("ch_login_password")).isDisplayed())
+			driver.findElement(By.id("ch_login_password")).sendKeys(password);
+		if(driver.findElement(By.id("ch_login_btn")).isDisplayed())
 		driver.findElement(By.id("ch_login_btn")).click();
 	}
 
 	@Then("^Login Failure$")
-	public void login_Failure() throws Throwable {
-	  
+	public void login_Failure()  {
+		WebElement loggedOut = null;
+		wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='login-profile logged_out']")));
+		if(driver.findElement(By.xpath("//span[@class='login-profile logged_out']")).isDisplayed()) 
+			loggedOut = driver.findElement(By.xpath("//span[@class='login-profile logged_out']"));
+		Assert.assertEquals(true, loggedOut.isDisplayed()); 
 	}
 	
-	@Given("^the User has logged in to the Application Successfullyy$")
-	public void the_User_has_logged_in_to_the_Application_Successfullyy() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
-	}
-	
+
 	@Given("^User enters valid credentials$")
-	public void user_enters_valid_credentials() throws Throwable {
+	public void user_enters_valid_credentials()  {
 		driver.findElement(By.id("ch_login_email")).sendKeys("fiyazhbasha@gmail.com");
 		driver.findElement(By.id("ch_login_password")).sendKeys("Allah@786");
 		driver.findElement(By.id("ch_login_btn")).click();
-		
-	   
+			   
 	}
 
 	
 	@When("^User enters \"([^\"]*)\" \"([^\"]*)\" destinations$")
-	public void user_enters_destinations(String arg1, String arg2) throws Throwable {
-		String dep = "Chennai (MAA)".replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
-		dep ="Chennai (MAA)".replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
+	public void user_enters_destinations(String from, String to)  {
+		String dep = from.replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
+		dep =from.replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
 		driver.findElement(By.id("hp-widget__sfrom")).sendKeys(dep);
-		String arr = "Sydney (SYD)".replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
-		arr ="Sydney (SYD)".replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
+		String arr = to.replaceAll("\\(", Keys.chord(Keys.SHIFT, "9"));
+		arr =to.replaceAll("\\)", Keys.chord(Keys.SHIFT, "0"));
 		driver.findElement(By.id("hp-widget__sTo")).sendKeys(arr);
 	}
 	
 	
-	@When("^the user enters the \"([^\"]*)\" \"([^\"]*)\"$")
-	public void the_user_enters_the(String arg1, String no_of_passengers) throws Throwable {
+	@When("^the user enters the \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
+	public void the_user_enters_the_traveldate_passengerno(String date, String month, String year, String no_of_passengers) {
+	    
+		
 		driver.findElement(By.id("hp-widget__depart")).click();
-		SelectDayFromMultiDateCalendar(4,25,2018);
+		driver.findElement(By.xpath("//td[@data-year='"+year+"'][@data-month='"+(Integer.parseInt(month)-1)+"']/a[contains(text(),'"+date+"')]")).click();
 		driver.findElement(By.id("hp-widget__paxCounter_pot")).click();
-		driver.findElement(By.xpath("//ul[@id='js-adult_counter']/li[contains(text(),'3')]")).click();
+		driver.findElement(By.xpath("//ul[@id='js-adult_counter']/li[contains(text(),'"+no_of_passengers+"')]")).click();
 	}
 
-	private void SelectDayFromMultiDateCalendar(int month, int date, int year) {
-		
-		 driver.findElement(By.xpath("//td[@data-year='"+year+"'][@data-month='"+(month-1)+"']/a[contains(text(),'"+date+"')]")).click();
-		 
-		
-	}
-
+	
 	@Then("^available flight status displayed Successfully$")
-	public void available_flight_status_displayed_Successfully() throws Throwable {
+	public void available_flight_status_displayed_Successfully() {
 		driver.findElement(By.id("searchBtn")).click();
+	}
+	
+	@Given("^the User enters the search Criteria$")
+	public void the_User_enters_the_search_Criteria()  {
+		
+		user_enters_destinations("Chennai (MAA)", "Sydney (SYD)");
+		the_user_enters_the_traveldate_passengerno("24", "5", "2018", "1");
+		available_flight_status_displayed_Successfully();
 	}
 	
 	@When("^the User selects the flight$")
 	public void the_User_selects_the_flight() throws Throwable {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		//String element = driver.findElement(By.xpath("//p[@class='airways-name '][contains(text(),'Air India Express+ 1 more')]")).getText();
 		driver.findElement(By.id("bookButton")).click();
 		
 	}
@@ -123,19 +145,15 @@ public class Steps {
 		WebElement total = driver.findElement(By
 				.className("amount_payable_total"));
 		Assert.assertEquals(true, total.isDisplayed());
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-
-		/*js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		
-		driver.findElement(By.cssSelector("a[ng-click *= 'gotoTraveller']")).click();*/
 		
 	}
 	
-	@After
+	/*@After
 	public void tearDown(){
 		driver.quit();
 		
-	}
+	}*/
 
 
 	
