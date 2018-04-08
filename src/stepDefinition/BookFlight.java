@@ -21,11 +21,11 @@ public class BookFlight {
 	}
 	
 	
-	@FindBy(id="bookButton")
+	@FindBy(how=How.CSS,using="#bookButton")
 	public WebElement book;
 	
 	
-	@FindBy(how= How.CLASS_NAME ,using= "amount_payable_total")
+	@FindBy(how=How.CSS,using=".amount_payable_total")
 	public WebElement result;
 	
 	

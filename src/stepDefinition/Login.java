@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,16 +19,16 @@ public class Login {
 		this.driver =driver;
 	}
 
-	@FindBy(id="ch_login_icon")
+	@FindBy(how=How.CSS,using="#ch_login_icon")
 	public WebElement login_icon;
 	
-	@FindBy(id="ch_login_email")
+	@FindBy(how=How.CSS,using="#ch_login_email")
 	public WebElement username;
 	
-	@FindBy(id="ch_login_password")
+	@FindBy(how=How.CSS,using="#ch_login_password")
 	public WebElement pass;
 	
-	@FindBy(id="ch_login_btn")
+	@FindBy(how=How.CSS,using="#ch_login_btn")
 	public WebElement log_into;
 	
 	public By login_success = By.xpath("//span[@class='login-profile']");

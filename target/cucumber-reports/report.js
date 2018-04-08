@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 14163483574,
+  "duration": 46060779072,
   "status": "passed"
 });
 formatter.background({
@@ -41,28 +41,28 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 14089555318,
+  "duration": 20025862377,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.user_enters_valid_credentials()"
 });
 formatter.result({
-  "duration": 1750474516,
+  "duration": 3120811906,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.the_User_enters_the_search_Criteria()"
 });
 formatter.result({
-  "duration": 16491862661,
+  "duration": 18114240806,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.available_flight_status_displayed_Successfully()"
 });
 formatter.result({
-  "duration": 9535662729,
+  "duration": 10913178977,
   "status": "passed"
 });
 formatter.scenario({
@@ -93,18 +93,18 @@ formatter.match({
   "location": "Steps.the_User_selects_the_flight()"
 });
 formatter.result({
-  "duration": 4417248981,
+  "duration": 6570601204,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.flight_Details_Page_Displayed_Successfully()"
 });
 formatter.result({
-  "duration": 3391267847,
+  "duration": 3458615553,
   "status": "passed"
 });
 formatter.after({
-  "duration": 472259080,
+  "duration": 1089985967,
   "status": "passed"
 });
 formatter.uri("LoginTest.feature");
@@ -170,7 +170,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 13915817936,
+  "duration": 18401941209,
   "status": "passed"
 });
 formatter.background({
@@ -217,7 +217,7 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 13102052364,
+  "duration": 17586431262,
   "status": "passed"
 });
 formatter.match({
@@ -234,18 +234,18 @@ formatter.match({
   "location": "Steps.user_enters_credentials(String,String)"
 });
 formatter.result({
-  "duration": 1597779362,
+  "duration": 2186078278,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.login_Successfull()"
 });
 formatter.result({
-  "duration": 1591657814,
+  "duration": 2000252718,
   "status": "passed"
 });
 formatter.after({
-  "duration": 321020244,
+  "duration": 440110374,
   "status": "passed"
 });
 formatter.scenarioOutline({
@@ -327,7 +327,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 11959641427,
+  "duration": 14808107547,
   "status": "passed"
 });
 formatter.background({
@@ -374,7 +374,7 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 14070581274,
+  "duration": 16095703986,
   "status": "passed"
 });
 formatter.match({
@@ -391,22 +391,22 @@ formatter.match({
   "location": "Steps.user_enters_credentials(String,String)"
 });
 formatter.result({
-  "duration": 2198249871,
+  "duration": 2458428171,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.login_Failure()"
 });
 formatter.result({
-  "duration": 636119883,
+  "duration": 808133024,
   "status": "passed"
 });
 formatter.after({
-  "duration": 291616105,
+  "duration": 475402655,
   "status": "passed"
 });
 formatter.before({
-  "duration": 19004287179,
+  "duration": 12251043030,
   "status": "passed"
 });
 formatter.background({
@@ -453,7 +453,7 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 13453180250,
+  "duration": 16049833267,
   "status": "passed"
 });
 formatter.match({
@@ -470,22 +470,22 @@ formatter.match({
   "location": "Steps.user_enters_credentials(String,String)"
 });
 formatter.result({
-  "duration": 4610939642,
+  "duration": 2429009651,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.login_Failure()"
 });
 formatter.result({
-  "duration": 455492114,
+  "duration": 678286936,
   "status": "passed"
 });
 formatter.after({
-  "duration": 363230033,
+  "duration": 449912165,
   "status": "passed"
 });
 formatter.before({
-  "duration": 15530704099,
+  "duration": 16505585496,
   "status": "passed"
 });
 formatter.background({
@@ -532,7 +532,7 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 18176268268,
+  "duration": 16398635729,
   "status": "passed"
 });
 formatter.match({
@@ -549,22 +549,22 @@ formatter.match({
   "location": "Steps.user_enters_credentials(String,String)"
 });
 formatter.result({
-  "duration": 1365719827,
+  "duration": 1967550087,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.login_Failure()"
 });
 formatter.result({
-  "duration": 422537584,
+  "duration": 692677935,
   "status": "passed"
 });
 formatter.after({
-  "duration": 607663338,
+  "duration": 388330556,
   "status": "passed"
 });
 formatter.before({
-  "duration": 43835264337,
+  "duration": 11682647260,
   "status": "passed"
 });
 formatter.background({
@@ -611,7 +611,7 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 18334118063,
+  "duration": 18522945427,
   "status": "passed"
 });
 formatter.match({
@@ -628,18 +628,18 @@ formatter.match({
   "location": "Steps.user_enters_credentials(String,String)"
 });
 formatter.result({
-  "duration": 1546878923,
+  "duration": 2177381053,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.login_Failure()"
 });
 formatter.result({
-  "duration": 478508425,
+  "duration": 685256221,
   "status": "passed"
 });
 formatter.after({
-  "duration": 301532955,
+  "duration": 434214425,
   "status": "passed"
 });
 formatter.uri("SearchFlights.feature");
@@ -713,7 +713,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 15672842183,
+  "duration": 12195578860,
   "status": "passed"
 });
 formatter.background({
@@ -737,14 +737,14 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 13997014631,
+  "duration": 15574355413,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.user_enters_valid_credentials()"
 });
 formatter.result({
-  "duration": 603726677,
+  "duration": 2289813790,
   "status": "passed"
 });
 formatter.scenario({
@@ -800,7 +800,7 @@ formatter.match({
   "location": "Steps.user_enters_destinations(String,String)"
 });
 formatter.result({
-  "duration": 13812493348,
+  "duration": 14427747700,
   "status": "passed"
 });
 formatter.match({
@@ -825,18 +825,18 @@ formatter.match({
   "location": "Steps.the_user_enters_the_traveldate_passengerno(String,String,String,String)"
 });
 formatter.result({
-  "duration": 3085725087,
+  "duration": 4000977179,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.available_flight_status_displayed_Successfully()"
 });
 formatter.result({
-  "duration": 8894939666,
+  "duration": 11136354727,
   "status": "passed"
 });
 formatter.after({
-  "duration": 540277415,
+  "duration": 475342249,
   "status": "passed"
 });
 formatter.uri("TravelDetails.feature");
@@ -921,7 +921,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 12993306445,
+  "duration": 12773509318,
   "status": "passed"
 });
 formatter.background({
@@ -965,42 +965,42 @@ formatter.match({
   "location": "Steps.user_navigates_to_Login_Page()"
 });
 formatter.result({
-  "duration": 13641368626,
+  "duration": 15336238435,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.user_enters_valid_credentials()"
 });
 formatter.result({
-  "duration": 2238922802,
+  "duration": 2608925698,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.the_User_enters_the_search_Criteria()"
 });
 formatter.result({
-  "duration": 16183055924,
+  "duration": 18173725876,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.available_flight_status_displayed_Successfully()"
 });
 formatter.result({
-  "duration": 8680060899,
+  "duration": 11033365865,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.the_User_selects_the_flight()"
 });
 formatter.result({
-  "duration": 4446400401,
+  "duration": 5697091680,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.flight_Details_Page_Displayed_Successfully()"
 });
 formatter.result({
-  "duration": 4045999338,
+  "duration": 3597956881,
   "status": "passed"
 });
 formatter.scenario({
@@ -1054,7 +1054,7 @@ formatter.match({
   "location": "Steps.the_user_is_in_TravellerDetail_Page()"
 });
 formatter.result({
-  "duration": 3760745171,
+  "duration": 4545762029,
   "status": "passed"
 });
 formatter.match({
@@ -1083,7 +1083,7 @@ formatter.match({
   "location": "Steps.the_user_enters_the_traveller_details(String,String,String,String,String)"
 });
 formatter.result({
-  "duration": 4985408058,
+  "duration": 6146642641,
   "status": "passed"
 });
 formatter.match({
@@ -1108,18 +1108,18 @@ formatter.match({
   "location": "Steps.the_user_enters_the_passport_details_and_date_of_expiry(String,String,String,String)"
 });
 formatter.result({
-  "duration": 1555696959,
-  "status": "passed"
+  "duration": 10227622369,
+  "error_message": "org.openqa.selenium.NoSuchElementException: Unable to locate element: input[ng-model\u003d\u0027traveller.passportNumber\u0027]\nFor documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.11.0\u0027, revision: \u0027e59cfb3\u0027, time: \u00272018-03-11T20:26:55.152Z\u0027\nSystem info: host: \u0027JAY-PC\u0027, ip: \u0027192.168.1.100\u0027, os.name: \u0027Windows 7\u0027, os.arch: \u0027amd64\u0027, os.version: \u00276.1\u0027, java.version: \u00271.8.0_144\u0027\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCapabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 59.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:headless: false, moz:processID: 20984, moz:profile: C:\\Users\\manchari\\AppData\\L..., moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: XP, platformName: XP, platformVersion: 6.1, rotatable: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}}\nSession ID: adb029a4-69f9-456e-a4f7-1138c6e1875e\n*** Element info: {Using\u003dcss selector, value\u003dinput[ng-model\u003d\u0027traveller.passportNumber\u0027]}\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:319)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:413)\r\n\tat org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:311)\r\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\r\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\r\n\tat com.sun.proxy.$Proxy16.isDisplayed(Unknown Source)\r\n\tat stepDefinition.TravelDetails.enterPassportDetails(TravelDetails.java:76)\r\n\tat stepDefinition.Steps.the_user_enters_the_passport_details_and_date_of_expiry(Steps.java:160)\r\n\tat ✽.And the user enters the passport_details \"K8347229\" and date_of_expiry \"09\"\"04\"\"2020\"(TravelDetails.feature:19)\r\n",
+  "status": "failed"
 });
 formatter.match({
   "location": "Steps.the_user_proceed_to_payment_gateway()"
 });
 formatter.result({
-  "duration": 32874,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.after({
-  "duration": 374124063,
+  "duration": 492447407,
   "status": "passed"
 });
 });

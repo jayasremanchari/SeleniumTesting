@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class SearchFlights {
@@ -19,22 +20,22 @@ public class SearchFlights {
 	}
 	
 	
-	@FindBy(id="hp-widget__sfrom")
+	@FindBy(how=How.CSS,using="#hp-widget__sfrom")
 	public WebElement departure_City;
 	
-	@FindBy(id="hp-widget__sTo")
+	@FindBy(how=How.CSS,using="#hp-widget__sTo")
 	public WebElement arrival_City;
 	
-	@FindBy(id="hp-widget__depart")
+	@FindBy(how=How.CSS,using="#hp-widget__depart")
 	public WebElement travel_Date;
 	
-	@FindBy(xpath="//a[@class='ui-datepicker-next ui-corner-all']")
+	@FindBy(how=How.CSS,using=".ui-datepicker-next ui-corner-all")
 	public WebElement next_picker;
 	
-	@FindBy(id="hp-widget__paxCounter_pot")
+	@FindBy(how=How.CSS,using="#hp-widget__paxCounter_pot")
 	public WebElement passenger_picker;
 	
-	@FindBy(id="searchBtn")
+	@FindBy(how=How.CSS,using="#searchBtn")
 	public WebElement search;
 	
 	
