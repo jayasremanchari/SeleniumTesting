@@ -16,8 +16,8 @@ Scenario Outline: Search for the available flights with Valid Inputs
 	
 	Examples: 
 	  | From | To |	date | month | year | no_of_passengers |
-      | Chenn | Sydne | 24 | 5 | 2018 | 1 |
-
+      | Chenn | Sydne | 11 | 11 | 2018 | 1 |
+      
 
       
 

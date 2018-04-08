@@ -85,7 +85,11 @@ public class Steps {
 	@When("^the user enters the \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
 	public void the_user_enters_the_traveldate_passengerno(String date, String month, String year, String no_of_passengers) {
 	    
-		search.enterTravelDetails( date,  month,  year,  no_of_passengers);
+		try {
+			search.enterTravelDetails( date,  month,  year,  no_of_passengers);
+		} catch (InterruptedException e) {
+			System.out.println("Exception caught!! in the_user_enters_the_traveldate_passengerno");
+		}
 		
 	}
 
