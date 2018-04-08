@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 
 @RunWith(Cucumber.class) 
-@CucumberOptions(features="Features",glue={"stepDefinition"})		
+@CucumberOptions(features="Features",glue={"stepDefinition"},tags={"@TravelTest"})		
 public class RunTest {
 
 }

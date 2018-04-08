@@ -7,6 +7,7 @@ Background:
    Given User navigates to Login Page
    And User enters valid credentials
    
+@SearchTest   
 Scenario Outline: Search for the available flights with Valid Inputs
 	 
 	When User enters "<From>" "<To>" destinations
@@ -15,7 +16,7 @@ Scenario Outline: Search for the available flights with Valid Inputs
 	
 	Examples: 
 	  | From | To |	date | month | year | no_of_passengers |
-      | Chennai | Sydney | 24 | 5 | 2018 | 1 |
+      | Chenn | Sydne | 24 | 5 | 2018 | 1 |
 
 
       

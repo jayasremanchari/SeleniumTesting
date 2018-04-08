@@ -5,11 +5,11 @@ Background:
 
    User navigates to MakeMyTrip Website
 
-
+@LoginTest
 Scenario Outline: Successful Login with Valid Credentials
 	
 	Given User navigates to Login Page
-	When User enters valid credentials"<username>""<password>"
+	When User enters credentials"<username>""<password>"
 	Then Login Successfull
 	
 	 Examples: 
@@ -17,9 +17,10 @@ Scenario Outline: Successful Login with Valid Credentials
       | fiyazhbasha@gmail.com | Allah@786 |
       
  
+@LoginTest 
 Scenario Outline: Login Failure with InValid Credentials
 	Given User navigates to Login Page
-	When User enters invalid credentials "<username>""<password>"
+	When User enters credentials"<username>""<password>"
 	Then Login Failure
 	
 	Examples: 
