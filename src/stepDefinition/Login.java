@@ -6,18 +6,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Login {
+import Utils.Util;
 
-	WebDriver driver = null;
-	WebDriverWait wait = null;
+public class Login extends Util {
+
+	
 	public Login(WebDriver driver) {
-		PageFactory.initElements(driver, this);
-		this.driver =driver;
+		super(driver);
+		
 	}
+	WebDriverWait wait = null;
+	
 
 	@FindBy(how=How.CSS,using="#ch_login_icon")
 	public WebElement login_icon;
@@ -38,17 +40,17 @@ public class Login {
 	public void navigateTo() {
 		driver.get("https://www.makemytrip.com");
 		driver.manage().window().maximize();
-		if (login_icon.isDisplayed())
+		if (elementExists(login_icon))
 			login_icon.click();
 		
 	}
 	public void enterCredentials(String email, String password) {
 
-		if(username.isDisplayed())
+		if(elementExists(username))
 			username.sendKeys(email);
-		if(pass.isDisplayed())
+		if(elementExists(pass))
 			pass.sendKeys(password);
-		if(log_into.isDisplayed())
+		if(elementExists(log_into))
 			log_into.click();
 		
 	}
@@ -57,7 +59,7 @@ public class Login {
 
 		wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(login_success));
-		if (driver.findElement(login_success).isDisplayed())
+		if (elementExists(driver.findElement(login_success)))
 			loggedId = driver.findElement(login_success);
 		
 		Assert.assertEquals(true, loggedId.isDisplayed());
@@ -67,7 +69,7 @@ public class Login {
 		WebElement loggedOut = null;
 		wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(login_fail));
-		if(driver.findElement(login_fail).isDisplayed()) 
+		if(elementExists(driver.findElement(login_fail))) 
 			loggedOut = driver.findElement(login_fail);
 		Assert.assertEquals(true, loggedOut.isDisplayed()); 
 		

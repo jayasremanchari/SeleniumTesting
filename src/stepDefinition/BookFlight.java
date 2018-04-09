@@ -1,24 +1,22 @@
 package stepDefinition;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
-public class BookFlight {
+import Utils.Util;
+
+public class BookFlight extends Util{
 
 
-	WebDriver driver = null;
 	public BookFlight(WebDriver driver) {
-		PageFactory.initElements(driver, this);
-		this.driver =driver;
-	
+		super(driver);
+		
 	}
+	WebDriver driver = null;
+	
 	
 	
 	@FindBy(how=How.CSS,using="#bookButton")
@@ -29,16 +27,16 @@ public class BookFlight {
 	public WebElement result;
 	
 	
-	public void bookFlight() {
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	public void bookFlight() throws InterruptedException {
+		
+		Thread.sleep(5000);
 		if(book.isDisplayed())
 			book.click();
 		
 	}
 	public void result() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Thread.sleep(3000);
-		Assert.assertEquals(true, result.isDisplayed());
+		waitUntilVisible(result);
+		Assert.assertEquals(true, elementExists(result));
 		
 	}
 

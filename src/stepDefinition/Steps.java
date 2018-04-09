@@ -31,6 +31,11 @@ public class Steps {
 	public void init() {
 		System.setProperty("webdriver.gecko.driver", "C:\\Users\\manchari\\Desktop\\SAI\\Selenium\\geckodriver-v0.19.1-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
+		
+		/*System.setProperty("webdriver.chrome.driver", "C:\\Users\\manchari\\Desktop\\SAI\\Selenium\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();*/
+		
+		
 	
 		
 	}
@@ -121,7 +126,11 @@ public class Steps {
 	public void the_User_selects_the_flight()  {
 	
 	book = new BookFlight(driver);
-	book.bookFlight();
+	try {
+		book.bookFlight();
+	} catch (InterruptedException e) {
+		System.out.println("Exception caught!! in the User selects the flight");
+	}
 		
 	}
 

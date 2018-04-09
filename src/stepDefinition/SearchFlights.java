@@ -10,22 +10,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
-import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
+import Utils.Util;
 
-public class SearchFlights {
+public class SearchFlights extends Util {
 
 	
 	
 	
-	WebDriver driver = null;
 	public SearchFlights(WebDriver driver) {
-		PageFactory.initElements(driver, this);
-		this.driver =driver;
+		super(driver);
+		
 	}
-	
-	
+		
 	@FindBy(how=How.CSS,using="#hp-widget__sfrom")
 	public WebElement departure_City;
 	
@@ -45,17 +42,17 @@ public class SearchFlights {
 	
 	
 	public void enterDestination(String from, String to) throws InterruptedException {
-		if(departure_City.isDisplayed()){
+		if(elementExists(departure_City)){
 			departure_City.clear();
-			Thread.sleep(3000); 
+			Thread.sleep(3000);
 			departure_City.sendKeys(from);
 			Thread.sleep(3000);
 			departure_City.sendKeys(Keys.RETURN);
 		}
 		
-		if(arrival_City.isDisplayed()){
+		if(elementExists(arrival_City)){
 			arrival_City.clear();
-			Thread.sleep(3000); 
+			Thread.sleep(3000);
 			arrival_City.sendKeys(to);
 			Thread.sleep(3000);
 			arrival_City.sendKeys(Keys.RETURN);
@@ -65,7 +62,7 @@ public class SearchFlights {
 	public void enterTravelDetails(String date, String month, String year,
 			String no_of_passengers) throws InterruptedException {
 		Boolean flag = Boolean.TRUE;
-		if(travel_Date.isDisplayed())
+		if(elementExists(travel_Date))
 			travel_Date.click();
 		while(flag){
 			try{
@@ -76,7 +73,7 @@ public class SearchFlights {
 			}
 			}
 			 catch(NoSuchElementException ex){
-				 Thread.sleep(3000);
+				 implicitWait(3);
 				 JavascriptExecutor js = (JavascriptExecutor)driver;
 				 js.executeScript("document.querySelector('[data-handler=\"next\"]').click();");
 			 }
@@ -85,14 +82,14 @@ public class SearchFlights {
 				
 
 		}
-		if(passenger_picker.isDisplayed())
+		if(elementExists(passenger_picker))
 			passenger_picker.click();
 		if(driver.findElement(By.xpath("//ul[@id='js-adult_counter']/li[contains(text(),'"+no_of_passengers+"')]")).isDisplayed())
 			driver.findElement(By.xpath("//ul[@id='js-adult_counter']/li[contains(text(),'"+no_of_passengers+"')]")).click();
 		
 	}
 	public void result() throws InterruptedException {
-		Thread.sleep(3000);
+		waitUntilVisible(search);
 		search.click();
 	}
 	

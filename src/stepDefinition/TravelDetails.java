@@ -1,23 +1,22 @@
 package stepDefinition;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
-public class TravelDetails {
+import Utils.Util;
 
-	WebDriver driver = null;
+public class TravelDetails extends Util {
+
+	
+	
+	
 	public TravelDetails(WebDriver driver) {
-		PageFactory.initElements(driver, this);
-		this.driver =driver;
+		super(driver);
+		
 	}
-	
-	
 	@FindBy(how= How.LINK_TEXT ,using= "Continue")
 	public WebElement cont;
 	
@@ -52,34 +51,38 @@ public class TravelDetails {
 	
 	
 	public void goToTravellerDetailsPage() throws InterruptedException {
-		JavascriptExecutor js=(JavascriptExecutor) driver;
-		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
-		Thread.sleep(3000);
-		if(cont.isDisplayed())
+		
+		implicitWait(10);
+		scrollToEnd();
+		waitUntilVisible(cont);
+		if(elementExists(cont))
 			cont.sendKeys(Keys.ENTER);		
 	}
+	
+	
+
 	public void enterTravellerDetails(String name, String surname, String date, String month, String year) throws InterruptedException {
 		Thread.sleep(3000);
-		if(traveller_name.isDisplayed())
+		if(elementExists(traveller_name))
 			traveller_name.sendKeys(name);
-		if(traveller_surname.isDisplayed())
+		if(elementExists(traveller_surname))
 			traveller_surname.sendKeys(surname);
-		if(travel_date.isDisplayed()) 
+		if(elementExists(travel_date)) 
 			travel_date.sendKeys(date);
-		if(travel_month.isDisplayed())
+		if(elementExists(travel_month))
 			travel_month.sendKeys(month);
-		if(travel_year.isDisplayed())
+		if(elementExists(travel_year))
 			travel_year.sendKeys(year);
 		
 	}
 	public void enterPassportDetails(String pass_no, String date, String month, String year) {
-		if(passport_no.isDisplayed())
+		if(elementExists(passport_no))
 			passport_no.sendKeys("ACGPF9984L");
-		if(pass_exp_date.isDisplayed())
+		if(elementExists(pass_exp_date))
 			pass_exp_date.sendKeys("21");
-		if(pass_exp_month.isDisplayed())
+		if(elementExists(pass_exp_month))
 			pass_exp_month.sendKeys("09");
-		if(pass_exp_year.isDisplayed())
+		if(elementExists(pass_exp_year))
 			pass_exp_year.sendKeys("2020");
 		
 	}
